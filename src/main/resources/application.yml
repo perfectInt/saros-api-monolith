@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/saros-db
+    username: ${SAROS_DB_USERNAME}
+    password: ${SAROS_DB_PASSWORD}
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+
+jwt:
+  secret:
+    access: D395887D0451F900CFD2A10486E4C3C8C2DB11D081A60E8D22B934AA22303CE4
