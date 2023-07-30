@@ -24,6 +24,7 @@
 - email: String
 - firstName: String
 - secondName: String
+- userRole: String
 ### 2. News (Модель самой новости)
 - id: Long
 - title: String
