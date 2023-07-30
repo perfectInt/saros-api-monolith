@@ -10,6 +10,7 @@
 - [Product](#5-product-модель-товара)
 - [Image](#6-image-модель-картинки)
 - [ProductView](#7-productview-для-удобного-представления-моделей-на-фронтенде)
+- [RegisterDto](#8-registerdto-для-регистрации-пользователя)
 #### 2. [Эндпоинты](#эндпоинты)
 - [Auth's endpoints](#1-auths-endpoints)
 - [Product's endpoints](#2-products-endpoints)
@@ -19,9 +20,10 @@
 ## Модели
 ### 1. User (Данные о пользователе)
 - id: Long
-- username: String
 - password: String
 - email: String
+- firstName: String
+- secondName: String
 ### 2. News (Модель самой новости)
 - id: Long
 - title: String
@@ -33,7 +35,7 @@
 - description: String
 - newsDate: LocalDateTime (in **dd.MM.yyyy HH:mm:ss** format)
 ### 4. LoginDto (Для авторизации)
-- username: String
+- email: String
 - password: String
 ### 5. Product (Модель товара)
 - id: Long
@@ -61,24 +63,30 @@
 - price: Double (надо подумать о перемене на Integer)
 - imagesIds: List<Long>
 - previewImageId: Long
+### 8. RegisterDto (для регистрации пользователя)
+- email: String
+- password: String
+- passwordConfirmation: String
+- firstName: String (optional)
+- secondName: String (optional)
 
 ## Эндпоинты
 ### 1. Auth's endpoints
 - **POST:** /api/v1/auth/register (Доступно всем)   
   **Регистрация пользователя.**  
   Принимает на вход данные в формате *application/json*  
-  Передаваемый тип: UserCredential userCredential (обязательно)   
-  Возвращаемый тип: String (пока что просто возвращает строку что пользователь добавлен)  
+  Передаваемый тип: RegisterDto registerDto (обязательно)   
+  Возвращаемый тип: String (возвращает jwt токен)  
   Планирую добавить роли юзеров и сделать этот эндпоинт закрытым, чтобы только админы могли регистрировать новых пользователей (но пока он открыт)  
   Пример:
     ```
-    User was added to the system
+    eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJydWxpazIyOCIsImlhdCI6MTY5MDQ4ODkzMiwiZXhwIjoxNjkwNDkwNzMyfQ.qTSjBOA70ToLH3dJNL0nTWco8R4fOJbATgtURnw0OuI
     ```
 - **POST:** /api/v1/auth/login (Доступно всем)  
   **Аутентификация пользователя.**  
   Принимает на вход данные в формате *application/json*  
-  Передаваемый тип: AuthRequestDto authRequestDto (обязательно)  
-  Возвращаемый тип: String
+  Передаваемый тип: LoginDto loginDto (обязательно)  
+  Возвращаемый тип: String (jwt токен)
   Пример:
     ```
     eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJydWxpazIyOCIsImlhdCI6MTY5MDQ4ODkzMiwiZXhwIjoxNjkwNDkwNzMyfQ.qTSjBOA70ToLH3dJNL0nTWco8R4fOJbATgtURnw0OuI
