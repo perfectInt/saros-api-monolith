@@ -1,8 +1,34 @@
 # SAROS API
 ### В данном разделе представлена документация по работе с API.
 
+## Быстрые ссылки
+#### 1. [Модели](#модели)
+- [User](#1-user-данные-о-пользователе)
+- [News](#2-news-модель-самой-новости)
+- [NewsView](#2-news-модель-самой-новости)
+- [LoginDto](#4-logindto-для-авторизации)
+- [Office's endpoints](#5-offices-endpoints-roles-admin)
+- [Request's endpoints](#6-requests-endpoints-roles-user-admin)
+- [Trip's endpoints](#7-trips-endpoints--roles-user-admin)
+- [User's endpoints](#8-users-endpoints)
+#### 5. [Модели](#модели)
+- [Accommodation](#1-accommodation)
+- [Destination](#2-destination)
+- [DestinationDto](#3-destinationdto)
+- [Id](#4-id)
+- [LoginRequest](#5-loginrequest)
+- [Notification](#6-notification)
+- [NotificationDto](#7-notificationdto)
+- [Office](#8-office)
+- [Request](#9-request)
+- [RequestDto](#10-requestdto)
+- [RequestStatusChangeDto](#11-requeststatuschangedto)
+- [Trip](#12-trip)
+- [TripDto](#13-tripdto)
+- [User](#14-user)
+
 ## Модели
-### 1. UserCredential (Данные о пользователе)
+### 1. User (Данные о пользователе)
 - id: Long
 - username: String
 - password: String
@@ -17,7 +43,7 @@
 - title: String
 - description: String
 - newsDate: LocalDateTime (in **dd.MM.yyyy HH:mm:ss** format)
-### 4. AuthRequestDto (Для авторизации)
+### 4. LoginDto (Для авторизации)
 - username: String
 - password: String
 ### 5. Product (Модель товара)
@@ -29,8 +55,7 @@
 - images: List<Image>
 - previewImageId: Long
 - dateOfCreation: LocalDateTime
-### 6. ProductDto (подумать об удалении этой модели)
-### 7. Image (Модель картинки)
+### 6. Image (Модель картинки)
 - id: Long
 - name: String
 - originalFileName: String
@@ -39,7 +64,7 @@
 - isPreviewImage: Boolean
 - bytes: Byte[]
 - product: Product
-### 8. ProductView (для удобного представления моделей на фронтенде)
+### 7. ProductView (для удобного представления моделей на фронтенде)
 - id: Long
 - title: String
 - description: String
