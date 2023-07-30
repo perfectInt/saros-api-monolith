@@ -7,11 +7,10 @@
 - [News](#2-news-модель-самой-новости)
 - [NewsView](#2-news-модель-самой-новости)
 - [LoginDto](#4-logindto-для-авторизации)
-- [Office's endpoints](#5-offices-endpoints-roles-admin)
-- [Request's endpoints](#6-requests-endpoints-roles-user-admin)
-- [Trip's endpoints](#7-trips-endpoints--roles-user-admin)
-- [User's endpoints](#8-users-endpoints)
-#### 5. [Модели](#модели)
+- [Product](#5-product-модель-товара)
+- [Image](#6-image-модель-картинки)
+- [ProductView](#7-productview-для-удобного-представления-моделей-на-фронтенде)
+#### 5. [Эндпоинты](#эндпоинты)
 - [Accommodation](#1-accommodation)
 - [Destination](#2-destination)
 - [DestinationDto](#3-destinationdto)
@@ -74,7 +73,7 @@
 - previewImageId: Long
 
 ## Эндпоинты
-### 1. User's endpoints
+### 1. Auth's endpoints
 - **POST:** /api/v1/auth/register (Доступно всем)   
   **Регистрация пользователя.**  
   Принимает на вход данные в формате *application/json*  
