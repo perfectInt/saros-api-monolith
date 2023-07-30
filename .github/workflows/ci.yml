@@ -21,8 +21,5 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Maven Verify
-        run: mvn -B clean verify
-
       - name: App building
         run: mvn clean package
