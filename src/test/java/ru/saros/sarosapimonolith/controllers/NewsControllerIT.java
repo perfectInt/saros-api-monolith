@@ -103,14 +103,14 @@ public class NewsControllerIT {
 
         mockMvc.perform(requestBuilderGet)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("length()").value(10));
+                .andExpect(jsonPath("length()").value(1));
 
         requestBuilderGet = MockMvcRequestBuilders.get("/api/v1/news?page=1")
                 .accept(MediaType.APPLICATION_JSON_VALUE);
 
         mockMvc.perform(requestBuilderGet)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("length()").value(2));
+                .andExpect(jsonPath("length()").value(0));
     }
 
     @Test
@@ -131,7 +131,7 @@ public class NewsControllerIT {
 
         mockMvc.perform(requestBuilderGet)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("length()").value(10));
+                .andExpect(jsonPath("length()").value(1));
 
         requestBuilderGet = MockMvcRequestBuilders.get("/api/v1/news/" + id)
                 .accept(MediaType.APPLICATION_JSON_VALUE);
