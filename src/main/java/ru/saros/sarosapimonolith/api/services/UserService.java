@@ -44,7 +44,7 @@ public class UserService {
         user.setLastName(request.getLastName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setUserRole(Role.USER.getAuthority());
-        if (getAllUsers().size() == 0) {
+        if (getAllUsers().isEmpty()) {
             user.setUserRole(Role.ADMIN.getAuthority());
         }
         return userRepository.save(user).getId();

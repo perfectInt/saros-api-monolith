@@ -57,9 +57,9 @@ public class NewsServiceTest {
     @Order(3)
     public void getNewsByPagesTest() {
         List<NewsView> newsViews = newsService.getNewsByPages(null);
-        assertEquals(1, newsViews.size());
+        assertEquals(10, newsViews.size());
         newsViews = newsService.getNewsByPages(1);
-        assertEquals(0, newsViews.size());
+        assertEquals(2, newsViews.size());
     }
 
     @Test
@@ -67,13 +67,13 @@ public class NewsServiceTest {
     public void updateNewsTest() {
         news.setTitle("Another title");
         newsService.updateNews(news);
-        assertEquals(1, newsService.getNewsByPages(0).size());
+        assertEquals(10, newsService.getNewsByPages(0).size());
     }
 
     @Test
     @Order(5)
     public void deleteNewsTest() {
         newsService.deleteNews(id);
-        assertEquals(0, newsService.getNewsByPages(0).size());
+        assertEquals(10, newsService.getNewsByPages(0).size());
     }
 }

@@ -8,6 +8,7 @@ import ru.saros.sarosapimonolith.models.dtos.LoginDto;
 import ru.saros.sarosapimonolith.models.dtos.RegisterDto;
 
 import javax.security.auth.message.AuthException;
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,7 +24,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody RegisterDto request) throws AuthException {
+    public String register(@RequestBody @Valid RegisterDto request) throws AuthException {
         return authService.register(request);
     }
 }

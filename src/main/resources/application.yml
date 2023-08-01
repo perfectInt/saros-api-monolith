@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/saros-db
-    username: ${SAROS_DB_USERNAME}
-    password: ${SAROS_DB_PASSWORD}
+    username: root
+    password: qwerty123
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true

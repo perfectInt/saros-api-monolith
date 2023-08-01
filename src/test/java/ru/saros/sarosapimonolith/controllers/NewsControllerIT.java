@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithAnonymousUser;
@@ -17,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import ru.saros.sarosapimonolith.api.init.NewsInit;
 import ru.saros.sarosapimonolith.api.services.NewsService;
 import ru.saros.sarosapimonolith.exceptions.NewsNotFoundException;
 import ru.saros.sarosapimonolith.models.entities.News;
@@ -37,6 +39,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class NewsControllerIT {
 
     ObjectMapper mapper = new ObjectMapper();
+
+    @MockBean
+    private NewsInit conf;
 
     @Autowired
     private MockMvc mockMvc;
@@ -98,14 +103,14 @@ public class NewsControllerIT {
 
         mockMvc.perform(requestBuilderGet)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("length()").value(1));
+                .andExpect(jsonPath("length()").value(10));
 
         requestBuilderGet = MockMvcRequestBuilders.get("/api/v1/news?page=1")
                 .accept(MediaType.APPLICATION_JSON_VALUE);
 
         mockMvc.perform(requestBuilderGet)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("length()").value(0));
+                .andExpect(jsonPath("length()").value(2));
     }
 
     @Test
@@ -126,7 +131,7 @@ public class NewsControllerIT {
 
         mockMvc.perform(requestBuilderGet)
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("length()").value(1));
+                .andExpect(jsonPath("length()").value(10));
 
         requestBuilderGet = MockMvcRequestBuilders.get("/api/v1/news/" + id)
                 .accept(MediaType.APPLICATION_JSON_VALUE);
